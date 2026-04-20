@@ -14,6 +14,15 @@ Application de gestion de tâches inspirée de Trello permettant aux utilisateur
 * Mise à jour dynamique des tâches (AJAX / Fetch API)
 
 ---
+## 📸 Aperçu
+### Inscription
+![Inscription](./screenshots/register.png)
+### Connexion
+![Connexion](./screenshots/login.png)
+### Projets
+![Projets](./screenshots/project.png)
+### Tâches
+![Tâches](./screenshots/task.png)
 
 ##  Stack technique
 
