@@ -1,33 +1,48 @@
 # Mini Trello — Test Technique Full Stack Junior
 
-Application de gestion de tâches collaboratives (type Trello), développée avec **Laravel 11**, **Blade** et **MySQL**.
+Application de gestion de tâches inspirée de Trello permettant aux utilisateurs de créer des projets, organiser des tâches et suivre leur progression via une interface simple et intuitive.
 
 ---
 
-## 🚀 Lancer le projet
+##  Fonctionnalités
 
-### Prérequis
-- PHP 8.2+
-- Composer
-- MySQL 8+
-- Node.js (pour npm)
+* Création de projets
+* Ajout, modification et suppression de tâches
+* Gestion du statut des tâches (To Do, In Progress, Done)
+* Authentification (login / register)
+* Interface simple et responsive avec Tailwind CSS
+* Mise à jour dynamique des tâches (AJAX / Fetch API)
 
-### Installation
+---
+
+##  Stack technique
+
+* **Backend** : Laravel 11 (MVC, Eloquent ORM)
+* **Frontend** : Blade + Tailwind CSS
+* **Base de données** : MySQL
+* **JS** : Vanilla JS (Fetch API)
+
+---
+
+##  Installation
 
 ```bash
-git clone https://github.com/TON_USERNAME/projettest
+git clone https://github.com/AmadoukorkaBah-gn/mini-trello.git
 cd projettest
 composer install
 cp .env.example .env
 php artisan key:generate
 ```
 
-Configurer `.env` :
+Configurer le fichier `.env` :
+
 ```
 DB_DATABASE=projettest
 DB_USERNAME=root
 DB_PASSWORD=
 ```
+
+Puis :
 
 ```bash
 php artisan migrate
@@ -36,36 +51,45 @@ php artisan serve
 
 ---
 
-## 🛠️ Choix techniques
-
-| Technologie | Raison |
-|---|---|
-| Laravel 11 | Framework robuste, architecture MVC claire, ORM Eloquent |
-| Blade | Templating natif Laravel, simple et efficace |
-| MySQL | Base relationnelle adaptée aux données structurées |
-| Tailwind CDN | UI rapide sans complexité de build |
-
----
-
-## ✅ Clean Code / DRY / SOLID appliqués
+##  Architecture & bonnes pratiques
 
 ### Clean Code
-- Noms de méthodes expressifs : `getProjectsForUser`, `changeStatus`, `assignTask`
-- Controllers fins — délèguent toute logique aux Services
-- Form Requests dédiés pour la validation
+
+* Controllers légers (logique déléguée aux Services)
+* Nommage clair des méthodes
+* Validation via Form Requests
 
 ### DRY
-- Les Services centralisent la logique métier réutilisable
-- Les Repositories abstraient toutes les requêtes DB
-- La layout Blade `layouts/app.blade.php` évite la répétition HTML
+
+* Services centralisent la logique métier
+* Repositories pour l’accès aux données
+* Layout Blade réutilisable
 
 ### SOLID
-- **SRP** : Controller → reçoit la requête, Service → logique métier, Repository → accès données
-- **OCP** : Ajout d'une nouvelle source de données = nouvelle classe Repository sans toucher aux Services
-- **DIP** : Les Services dépendent d'interfaces (`ProjectRepositoryInterface`), pas des implémentations concrètes — binding dans `AppServiceProvider`
+
+* **SRP** : séparation claire des responsabilités
+* **DIP** : utilisation d’interfaces (Repository Pattern)
+* **OCP** : extensible sans modifier le code existant
 
 ---
 
-## 🎯 Difficultés rencontrées
-- Gestion du drag & drop en vanilla JS avec l'API Fetch pour la mise à jour asynchrone du statut
-- Architecture SOLID en Laravel : le binding interface/implémentation via le Service Provider
+##  Difficultés rencontrées
+
+* Implémentation du drag & drop avec mise à jour asynchrone
+* Structuration d’une architecture propre (Services + Repositories)
+* Gestion des interactions dynamiques côté frontend
+
+---
+
+##  Améliorations possibles
+
+* Drag & drop avancé (type Trello réel)
+* Ajout de notifications en temps réel
+* API REST complète + frontend Vue/React
+* Gestion multi-utilisateurs et collaboration en temps réel
+
+---
+
+## 👨 Auteur
+
+Amadou Korka Bah
