@@ -98,6 +98,37 @@ php artisan serve
 * Gestion multi-utilisateurs et collaboration en temps réel
 
 ---
+## exercice d'analyse corrigé
+1) les problemes dans le code
+Le nom de la fonction process n’est pas explicite
+Accès direct aux clés (d["status"], d["name"]) → risque d’erreur (KeyError)
+Mélange de plusieurs responsabilités (filtrage + transformation)
+Code peu lisible (boucle + condition + transformation dans la même fonction)
+Logique pas facilement extensible (statut "done" figé)
+2) version ameliorée
+def get_completed_task_names(tasks):
+    return [
+        task.get("name", "").upper()
+        for task in tasks
+        if task.get("status") == "done"
+    ]
+
+3) On rend le code extensible en séparant les responsabilités :
+
+def is_task_done(task):
+    return task.get("status") == "done"
+
+
+def format_task_name(task):
+    return task.get("name", "").upper()
+
+
+def get_completed_task_names(tasks):
+    return [
+        format_task_name(task)
+        for task in tasks
+        if is_task_done(task)
+    ]
 
 ## 👨 Auteur
 
