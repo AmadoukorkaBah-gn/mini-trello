@@ -7,6 +7,7 @@ use App\Repositories\Contracts\TaskRepositoryInterface;
 use App\Repositories\ProjectRepository;
 use App\Repositories\TaskRepository;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,5 +17,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(TaskRepositoryInterface::class, TaskRepository::class);
     }
 
-    public function boot(): void {}
+   public function boot(): void
+{
+    URL::forceScheme('https');
+}
 }
